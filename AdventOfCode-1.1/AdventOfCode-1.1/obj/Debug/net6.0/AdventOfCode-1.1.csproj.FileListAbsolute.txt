@@ -1,0 +1,15 @@
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\AdventOfCode-1.1.exe
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\AdventOfCode-1.1.deps.json
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\AdventOfCode-1.1.runtimeconfig.json
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\AdventOfCode-1.1.dll
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\ref\AdventOfCode-1.1.dll
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\bin\Debug\net6.0\AdventOfCode-1.1.pdb
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.csproj.AssemblyReference.cache
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.GeneratedMSBuildEditorConfig.editorconfig
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.AssemblyInfoInputs.cache
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.AssemblyInfo.cs
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.csproj.CoreCompileInputs.cache
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.dll
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\ref\AdventOfCode-1.1.dll
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.pdb
+H:\GitHub\AdventOfCode\AdventOfCode2021\AdventOfCode-1.1\AdventOfCode-1.1\obj\Debug\net6.0\AdventOfCode-1.1.genruntimeconfig.cache
