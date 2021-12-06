@@ -262,31 +262,15 @@ namespace AdventOfCode_1._1
                 {
                     if (boards.Count == 1 && ((boards[0].ElementAt(0 + i * 5).Value == true && boards[0].ElementAt(1 + i * 5).Value == true && boards[0].ElementAt(2 + i * 5).Value == true && boards[0].ElementAt(3 + i * 5).Value == true && boards[0].ElementAt(4 + i * 5).Value == true) || (boards[0].ElementAt(i).Value == true && boards[0].ElementAt(i + 5).Value == true && boards[0].ElementAt(i + 10).Value == true && boards[0].ElementAt(i + 15).Value == true && boards[0].ElementAt(i + 20).Value == true)))
                     {
-                        for (int ii = 0; ii < 5; ii++)
-                        {
-                            Console.WriteLine(((boards[0].ElementAt(0 + ii * 5).Value) ? "V" : "O") + ((boards[0].ElementAt(1 + ii * 5).Value) ? "V" : "O") + ((boards[0].ElementAt(2 + ii * 5).Value) ? "V" : "O") + ((boards[0].ElementAt(3 + ii * 5).Value) ? "V" : "O") + ((boards[0].ElementAt(4 + ii * 5).Value) ? "V" : "O"));
-                        }
                         win = true;
                         break;
                     }
-                    
+
                     boards.RemoveAll(x => x.ElementAt(0 + i * 5).Value == true && x.ElementAt(1 + i * 5).Value == true && x.ElementAt(2 + i * 5).Value == true && x.ElementAt(3 + i * 5).Value == true && x.ElementAt(4 + i * 5).Value == true);
-
                     boards.RemoveAll(x => x.ElementAt(i).Value == true && x.ElementAt(i + 5).Value == true && x.ElementAt(i + 10).Value == true && x.ElementAt(i + 15).Value == true && x.ElementAt(i + 20).Value == true);
+                }
+            }
 
-                }
-            }
-            int indexx = 0;
-            foreach (Dictionary<int, bool> board in boards)
-            {
-                Console.WriteLine("Board " + indexx);
-                for (int i = 0; i < 5; i++)
-                {
-                    Console.WriteLine(((board.ElementAt(0 + i * 5).Value) ? "V" : "O") + ((board.ElementAt(1 + i * 5).Value) ? "V" : "O") + ((board.ElementAt(2 + i * 5).Value) ? "V" : "O") + ((board.ElementAt(3 + i * 5).Value) ? "V" : "O") + ((board.ElementAt(4 + i * 5).Value) ? "V" : "O"));
-                }
-                indexx++;
-                Console.WriteLine();
-            }
             Console.WriteLine(winningNumber);
             Console.WriteLine(winningNumber * boards[0].Where(x => x.Value == false).ToList().Sum(x => x.Key));
 
@@ -294,7 +278,140 @@ namespace AdventOfCode_1._1
 
         public void Question51()
         {
+            List<int> numbers = System.IO.File.ReadAllText(@"..\\..\\..\\inputDay5.txt").Replace(" -> ", ",").Replace("\r\n", ",").Split(",").ToList().ConvertAll(int.Parse);
+            int max = numbers.Max();
+            int maxInGraphCount = 0;
 
+            int[,] graph = new int[max + 1, max + 1];
+
+            for (int i = 0; i < numbers.Count(); i += 4)
+            {
+                if (numbers[i] == numbers[i + 2])
+                {
+                    for (int j = Math.Min(numbers[i + 3], numbers[i + 1]); j <= Math.Max(numbers[i + 3], numbers[i + 1]); j++)
+                    {
+                        if (graph[numbers[i], j] >= 2)
+                        {
+                            graph[numbers[i], j] += 1;
+                        }
+                        else
+                        {
+                            graph[numbers[i], j] += 1;
+                            maxInGraphCount = (graph[numbers[i], j] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+
+                else if (numbers[i + 1] == numbers[i + 3])
+                {
+                    for (int j = Math.Min(numbers[i], numbers[i + 2]); j <= Math.Max(numbers[i], numbers[i + 2]); j++)
+                    {
+                        if (graph[j, numbers[i + 1]] >= 2)
+                        {
+                            graph[j, numbers[i + 1]] += 1;
+                        }
+                        else
+                        {
+                            graph[j, numbers[i + 1]] += 1;
+                            maxInGraphCount = (graph[j, numbers[i + 1]] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(maxInGraphCount.ToString());
+        }
+
+        public void Question52()
+        {
+            List<int> numbers = System.IO.File.ReadAllText(@"..\\..\\..\\inputDay5.txt").Replace(" -> ", ",").Replace("\r\n", ",").Split(",").ToList().ConvertAll(int.Parse);
+            int max = numbers.Max();
+            int maxInGraphCount = 0;
+
+            int[,] graph = new int[max + 1, max + 1];
+
+            for (int i = 0; i < numbers.Count(); i += 4)
+            {
+                if (numbers[i] == numbers[i + 2] && numbers[i + 1] != numbers[i + 3])
+                {
+                    for (int j = Math.Min(numbers[i + 3], numbers[i + 1]); j <= Math.Max(numbers[i + 3], numbers[i + 1]); j++)
+                    {
+                        if (graph[numbers[i], j] >= 2)
+                        {
+                            graph[numbers[i], j] += 1;
+                        }
+                        else
+                        {
+                            graph[numbers[i], j] += 1;
+                            maxInGraphCount = (graph[numbers[i], j] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+
+                else if (numbers[i + 1] == numbers[i + 3] && numbers[i] != numbers[i + 2])
+                {
+                    for (int j = Math.Min(numbers[i], numbers[i + 2]); j <= Math.Max(numbers[i], numbers[i + 2]); j++)
+                    {
+                        if (graph[j, numbers[i + 1]] >= 2)
+                        {
+                            graph[j, numbers[i + 1]] += 1;
+                        }
+                        else
+                        {
+                            graph[j, numbers[i + 1]] += 1;
+                            maxInGraphCount = (graph[j, numbers[i + 1]] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+
+                else if (numbers[i] == numbers[i + 1] && numbers[i + 2] == numbers[i + 3])
+                {
+                    for (int j = Math.Min(numbers[i], numbers[i + 2]); j <= Math.Max(numbers[i], numbers[i + 2]); j++)
+                    {
+                        if (graph[j, j] >= 2)
+                        {
+                            graph[j, j] += 1;
+                        }
+                        else
+                        {
+                            graph[j, j] += 1;
+                            maxInGraphCount = (graph[j, j] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+
+                else if ((Math.Abs(numbers[i] - numbers[i + 2]) == Math.Abs(numbers[i + 1] - numbers[i + 3])) && ((numbers[i] - numbers[i + 2]) *(numbers[i + 1] - numbers[i + 3]))<0)
+                {
+                    for (int j = Math.Min(numbers[i], numbers[i + 2]); j <= Math.Max(numbers[i], numbers[i + 2]); j++)
+                    {
+                        if(graph[j,Math.Max(numbers[i+1],numbers[i+3])-(j- Math.Min(numbers[i], numbers[i + 2]))] >= 2)
+                        {
+                            graph[j, Math.Max(numbers[i + 1], numbers[i + 3]) - (j - Math.Min(numbers[i], numbers[i + 2]))] += 1;
+                        }
+                        else
+                        {
+                            graph[j, Math.Max(numbers[i + 1], numbers[i + 3]) - (j - Math.Min(numbers[i], numbers[i + 2]))] += 1;
+                            maxInGraphCount = (graph[j, Math.Max(numbers[i + 1], numbers[i + 3]) - (j - Math.Min(numbers[i], numbers[i + 2]))] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+
+                else if ((Math.Abs(numbers[i] - numbers[i + 2]) == Math.Abs(numbers[i + 1] - numbers[i + 3])) && ((numbers[i] - numbers[i + 2]) * (numbers[i + 1] - numbers[i + 3])) > 0)
+                {
+                    for (int j = Math.Min(numbers[i], numbers[i + 2]); j <= Math.Max(numbers[i], numbers[i + 2]); j++)
+                    {
+                        if (graph[j, Math.Min(numbers[i + 1], numbers[i + 3]) + (j - Math.Min(numbers[i], numbers[i + 2]))] >= 2)
+                        {
+                            graph[j, Math.Min(numbers[i + 1], numbers[i + 3]) + (j - Math.Min(numbers[i], numbers[i + 2]))] += 1;
+                        }
+                        else
+                        {
+                            graph[j, Math.Min(numbers[i + 1], numbers[i + 3]) + (j - Math.Min(numbers[i], numbers[i + 2]))] += 1;
+                            maxInGraphCount = (graph[j, Math.Min(numbers[i + 1], numbers[i + 3]) + (j - Math.Min(numbers[i], numbers[i + 2]))] > 1) ? maxInGraphCount + 1 : maxInGraphCount;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine(maxInGraphCount.ToString());
         }
     }
 }
